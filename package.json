@@ -37,5 +37,9 @@
     "react",
     "typescript",
     "npm"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+
 }
