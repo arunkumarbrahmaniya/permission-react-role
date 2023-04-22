@@ -1,8 +1,8 @@
 {
-  "name": "@bajiraomastani/react-permission-role",
-  "version": "1.0.3",
-  "description": "Role based access management solution for React applications",
-  "author": "Bajirao Mastani",
+  "name": "@arunkumarbrah/react-permission-role",
+  "version": "1.0.4",
+  "description": "Role and permissions based access management solution for React applications",
+  "author": "arun kumar brahmaniya",
   "license": "MIT License",
   "repository": "https://github.com/arunkumarbrahmaniya/permission-react-role.git",
   "main": "dist/index.js",
