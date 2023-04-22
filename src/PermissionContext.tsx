@@ -1,13 +1,13 @@
 import { createContext } from "react";
 
-export interface UserPayload {
+export interface IUserPayload {
     id: string,
     roles?: string[],
     permissions?: string[]
 }
 
-export interface PermifyAuthContext {
-    setUser: (user: UserPayload) => void;
+export interface PermissionAuthContext {
+    setUser: (user: IUserPayload) => void;
     isAuthorized: (roleNames?: string[], permissionsNames?: string[]) => Promise<boolean>;
     isLoading: boolean;
 }
@@ -16,10 +16,10 @@ const noUser = (): never => {
     throw new Error("You didn't set User!");
 };
 
-const PermifyContext = createContext<PermifyAuthContext>({
+const PermissionContext = createContext<PermissionAuthContext>({
     setUser: noUser,
     isAuthorized: noUser,
     isLoading: false,
 });
 
-export default PermifyContext;
+export default PermissionContext;

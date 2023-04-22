@@ -1,6 +1,6 @@
 {
-  "name": "@permission/react-permission-role",
-  "version": "1.0.0",
+  "name": "@permission-provider/react-permission-role",
+  "version": "1.0.3",
   "description": "Role based access management solution for React applications",
   "author": "Bajirao Mastani",
   "license": "MIT License",
@@ -38,8 +38,7 @@
     "typescript",
     "npm"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+  "dependencies": {
+    "@arunkumarbrah/react-permission-role": "^1.0.2"
   }
-
 }

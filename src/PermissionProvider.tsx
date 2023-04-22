@@ -1,22 +1,22 @@
 import React, { PropsWithChildren, useCallback, useState } from "react";
 
-export interface UserPayload {
+export interface IUserPayload {
     id: string,
     roles: string[],
     permissions: string[]
 }
 
 //context
-import PermifyContext from "./PermifyContext";
+import PermissionContext from "./PermissionContext";
 
-const LOCAL_STORAGE_KEY_USER = "__permifyUser";
+const LOCAL_STORAGE_KEY_USER = "__permissionUser";
 
-const PermifyProvider = ({
+const PermissionProvider = ({
     children
 }: PropsWithChildren) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const updateUser = (newUser: UserPayload) => {
+    const updateUser = (newUser: IUserPayload) => {
         localStorage.setItem(LOCAL_STORAGE_KEY_USER, JSON.stringify(newUser));
     };
     
@@ -34,7 +34,7 @@ const PermifyProvider = ({
         return hasAuthorization
     }, []);
 
-    const CheckUserHasRolesOrPermissions = async (storedUser: UserPayload, roleNames?: string[], permissionNames?:string[]): Promise<boolean> => {
+    const CheckUserHasRolesOrPermissions = async (storedUser: IUserPayload, roleNames?: string[], permissionNames?:string[]): Promise<boolean> => {
         let hasRoles: boolean = false;
         let hasPermissions: boolean = false;
 
@@ -42,7 +42,7 @@ const PermifyProvider = ({
         if(storedUser.roles && roleNames && storedUser.roles.length > 0) {
             const userRoles =  storedUser.roles;
 
-            const intersection = userRoles.filter(role => roleNames.includes(role));
+            const intersection = userRoles.filter((role:any) => roleNames.includes(role));
             hasRoles = intersection.length > 0
         }
 
@@ -50,19 +50,19 @@ const PermifyProvider = ({
         if(storedUser.permissions && permissionNames && storedUser.permissions.length > 0) {
             const userPermissions =  storedUser.permissions;
 
-            const intersection = userPermissions.filter(permission => permissionNames.includes(permission));
+            const intersection = userPermissions.filter((permission:any) => permissionNames.includes(permission));
             hasPermissions = intersection.length > 0
         }
 
         return hasRoles || hasPermissions
     };
 
-    return <PermifyContext.Provider value={{
+    return <PermissionContext.Provider value={{
         setUser: updateUser,
         isAuthorized,
         isLoading
     }}>{children}
-    </PermifyContext.Provider>;
+    </PermissionContext.Provider>;
 };
 
-export default PermifyProvider;
+export default PermissionProvider;

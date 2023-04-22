@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { useEffect, useState, useContext, PropsWithChildren } from 'react'
+import { useEffect, useState, PropsWithChildren } from 'react'
 
-export interface UserPayload {
+export interface IUserPayload {
   id: string,
   roles: string[],
   permissions: string[]
 }
 
-const LOCAL_STORAGE_KEY_USER = "__permifyUser";
+const LOCAL_STORAGE_KEY_USER = "__permissionUser";
 
 export interface HasAccessProps {
   roles?: string[],
@@ -16,47 +16,47 @@ export interface HasAccessProps {
   renderAuthFailed?: React.ReactElement
 }
 
-const HasAccess = ({
+const AllowedAccess = ({
   roles,
   permissions,
   isLoading,
   renderAuthFailed,
   children
 }: PropsWithChildren<HasAccessProps>) => {
-  const [hasAccess, setHasAccess] = useState(false)
+  const [allowedAccess, setAllowedAccess] = useState(false)
   const [checking, setChecking] = useState(false)
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_USER));
 
     if(!storedUser) {
-      console.log('No user provided to Permify! You should set user to perfom access check') 
+      console.log('There is no user provided for permission! You should set user to perfom the access check');
       return;
     } 
 
     setChecking(true)
 
-    // role check
+    // check the roles here
     if (roles && storedUser.roles && storedUser.roles.length > 0) {
       const intersection = storedUser.roles.filter((role: string) => roles.includes(role));
-      if (intersection.length > 0) setHasAccess(true)
+      if (intersection.length > 0) setAllowedAccess(true)
     }
 
-    // permission check
+    // check the permission here
     if (permissions && storedUser.permissions && storedUser.permissions.length > 0) {
       const intersection = storedUser.permissions.filter((permission: string) => permissions.includes(permission));
-      if (intersection.length > 0) setHasAccess(true)
+      if (intersection.length > 0) setAllowedAccess(true)
     }
 
     setChecking(false)
 
   }, [roles, permissions])
 
-  if (!hasAccess && checking) {
+  if (!allowedAccess && checking) {
     return isLoading
   }
   
-  if (hasAccess) {
+  if (allowedAccess) {
     return (
       // children is of type ReactNode which already includes ReactFragment
         {children}
@@ -70,4 +70,4 @@ const HasAccess = ({
   return null
 }
 
-export default HasAccess;
+export default AllowedAccess;
