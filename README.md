@@ -4,12 +4,12 @@ Permission React Role is a comprehensive and lightweight solution for managing a
 Use npm to install: 
 
 ```shell
-npm install @arunkumarbrah/react-permission-role
+npm install react-permission-role
 ```
 Use yarn to install:
 
 ```shell
-yarn add @arunkumarbrah/react-permission-role
+yarn add react-permission-role
 ```
 
 # How to use
@@ -20,7 +20,7 @@ To perform access checks in a specific part of your application, you can use Per
 
 ```javascript
 import React from "react";
-import { PermissionProvider } from "@arunkumarbrah/react-permission-role";
+import { PermissionProvider } from "react-permission-role";
 const App = () => {
     return (
         <PermissionProvider>
@@ -38,7 +38,7 @@ You can set the user by using the ```usePermission``` hook as follows:-
 
 ```javascript
 
-import { usePermission } from '@arunkumarbrah/react-permission-role';
+import { usePermission } from 'react-permission-role';
 const { setUser } = usePermission();
 const Userlogin = async (event) => {
     const response = await Login(username, password);
@@ -54,7 +54,7 @@ Or you can use the  ```PermissionContext``` as well as follows:-
 
 ```javascript
 import React from "react";
-import { PermissionContext } from "@arunkumarbrah/react-permission-role";
+import { PermissionContext } from "react-permission-role";
 const Authentication = () => {
     const UserLogin = (setUser) => {
         return async (event) => {
@@ -89,7 +89,7 @@ You can check roles and permissions of the user with giving them as props.
 
 ```javascript
 import React from "react";
-import { AllowedAccess } from "@arunkumarbrah/react-permission-role";
+import { AllowedAccess } from "react-permission-role";
 const ComponentName = () => {
     return (
         <AllowedAccess
@@ -113,7 +113,7 @@ Using isAuthorized through the usePermission hook is as follows:-
 
 ```javascript
 import React, {useState, useEffect} from "react";
-import { usePermission } from "@arunkumarbrah/react-permission-role";
+import { usePermission } from "react-permission-role";
 const ComponentName = () => {
     const { isAuthorized, isLoading } = usePermission();
     useEffect(() => {
