@@ -1,9 +1,9 @@
 import React, { PropsWithChildren, useCallback, useState } from "react";
 
-export interface IUserPayload {
-    id: string,
-    roles: string[],
-    permissions: string[]
+export interface IUserPayload extends PropsWithChildren {
+    id: any,
+    roles: any[],
+    permissions: any[]
 }
 
 //context
@@ -20,7 +20,7 @@ const PermissionProvider = ({
         localStorage.setItem(LOCAL_STORAGE_KEY_USER, JSON.stringify(newUser));
     };
     
-    const isAuthorized = useCallback(async (roleNames: string[], permissionNames?:string[]): Promise<boolean> => {
+    const isAuthorized = useCallback(async (roleNames: any[], permissionNames?:any[]): Promise<boolean> => {
         
         let hasAuthorization: boolean = false;
         const storedUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_USER));
@@ -34,7 +34,7 @@ const PermissionProvider = ({
         return hasAuthorization
     }, []);
 
-    const CheckUserHasRolesOrPermissions = async (storedUser: IUserPayload, roleNames?: string[], permissionNames?:string[]): Promise<boolean> => {
+    const CheckUserHasRolesOrPermissions = async (storedUser: IUserPayload, roleNames?: any[], permissionNames?:any[]): Promise<boolean> => {
         let hasRoles: boolean = false;
         let hasPermissions: boolean = false;
 

@@ -1,6 +1,6 @@
 {
-  "name": "@arunkumarbrah/react-permission-role",
-  "version": "1.0.4",
+  "name": "react-permission-role",
+  "version": "1.0.8",
   "description": "Role and permissions based access management solution for React applications",
   "author": "arun kumar brahmaniya",
   "license": "MIT License",
@@ -36,9 +36,14 @@
   "keywords": [
     "react",
     "typescript",
-    "npm"
+    "npm",
+    "react-permission-role",
+    "permission-role-react",
+    "permissions",
+    "rbac",
+    "role based access management"
   ],
   "dependencies": {
-    "@arunkumarbrah/react-permission-role": "^1.0.2"
+    "react-permission-role": "^1.0.8"
   }
 }

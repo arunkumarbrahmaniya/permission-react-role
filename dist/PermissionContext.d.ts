@@ -1,12 +1,12 @@
-/// <reference types="react" />
-export interface IUserPayload {
-    id: string;
-    roles?: string[];
-    permissions?: string[];
+import { PropsWithChildren } from "react";
+export interface IUserPayload extends PropsWithChildren {
+    id: any;
+    roles?: any[];
+    permissions?: any[];
 }
 export interface PermissionAuthContext {
     setUser: (user: IUserPayload) => void;
-    isAuthorized: (roleNames?: string[], permissionsNames?: string[]) => Promise<boolean>;
+    isAuthorized: (roleNames?: any[], permissionsNames?: any[]) => Promise<boolean>;
     isLoading: boolean;
 }
 declare const PermissionContext: import("react").Context<PermissionAuthContext>;
