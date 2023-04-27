@@ -1,6 +1,6 @@
 {
   "name": "react-permission-role",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "Role and permissions based access management solution for React applications",
   "author": "arun kumar brahmaniya",
   "license": "MIT License",
@@ -41,9 +41,18 @@
     "permission-role-react",
     "permissions",
     "rbac",
-    "role based access management"
+    "role based access management",
+    "Permission",
+    "Role",
+    "Access control",
+    "#RBAC",
+    "#ACL",
+    "#ReactRBAC",
+    "#ReactACL",
+    "#ReactAuthorization",
+    "#AccessControl"
   ],
   "dependencies": {
-    "react-permission-role": "^1.0.8"
+    "react-permission-role": "^2.0.0"
   }
 }
