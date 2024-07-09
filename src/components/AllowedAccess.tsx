@@ -25,7 +25,7 @@ const AllowedAccess = ({
   children
 }: PropsWithChildren<HasAccessProps>) => {
   const [allowedAccess, setAllowedAccess] = useState(false)
-  const [checking, setChecking] = useState(false)
+  const [checking, setChecking] = useState(true)
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_USER));
